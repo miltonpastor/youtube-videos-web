@@ -1,4 +1,4 @@
-const url = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCTVhTIU0Kpx7rk7DFTWgnCw&part=snippet%2Cid&order=date&maxResults=5';
+const url = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCUy78-eixVj9bUbDrJyRYbQ&part=snippet%2Cid&order=date&maxResults=5';
 const options = {
 	method: 'GET',
 	headers: {
@@ -7,6 +7,8 @@ const options = {
 	}
 };
 const content = null || document.getElementById('content');
+const nameChannel = null || document.getElementById('name');
+const mainImg = null || document.getElementById('mainImg');
 
 async function fetchData(urlApi) {
     try {
@@ -40,6 +42,8 @@ async function fetchData(urlApi) {
         `; //Para hacer uso de 4 de los que traigo slice; Para unir esto usamos join
            //El view retorna una arreglo que este es un html
         content.innerHTML = view; //dentro de content poner el html view
+        nameChannel.innerHTML = videos.items[1].snippet.channelTitle;
+        mainImg.src = videos.items[0].snippet.thumbnails.high.url;
     } catch (error) {
         console.log(error)
     }
